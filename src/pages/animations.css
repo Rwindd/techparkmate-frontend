@@ -1,0 +1,24 @@
+.clock-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+@media (max-width: 900px) { .clock-layout { grid-template-columns: 1fr; } }
+
+@keyframes logoRock {
+  0%,100% { transform: rotate(-4deg) scale(1); }
+  50%     { transform: rotate(4deg) scale(1.04); }
+}
+@keyframes bob {
+  0%,100% { transform: translateY(0) rotate(-6deg); }
+  50%     { transform: translateY(-14px) rotate(6deg); }
+}
+@keyframes popIn {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+@keyframes rockIt {
+  from { transform: scale(0) rotate(-180deg); }
+  to   { transform: scale(1) rotate(0deg); }
+}

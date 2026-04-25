@@ -1,0 +1,95 @@
+/* ─── Home.css ──────────────────────────────────────────────────────────────── */
+
+.home-banner {
+  padding: 32px 0 44px;
+  background: radial-gradient(ellipse 60% 100% at 50% 0, rgba(139,92,246,.07) 0%, transparent 80%);
+}
+
+.home-hello {
+  font-size: 13px; font-weight: 700; color: var(--violet);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
+}
+
+/* ── FIX: font was stretching — clamp size, normal stretch, tight tracking ── */
+.home-h1 {
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+  font-stretch: normal;
+  word-break: keep-all;
+}
+
+.home-sub  { font-size: 15px; color: var(--txt2); margin-bottom: 20px; }
+
+.stat-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+.sp {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 13px; border-radius: 50px;
+  background: var(--mist); border: 1px solid var(--rim);
+  font-size: 12px; color: var(--txt2); white-space: nowrap;
+}
+.sp b { color: var(--txt); }
+
+/* Module grid — matches image 3 design */
+.mods-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 44px;
+}
+@media (max-width: 1000px) { .mods-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px)  { .mods-grid { grid-template-columns: 1fr 1fr; gap: 10px; } }
+
+.mod-card {
+  border-radius: 18px; padding: 22px 18px;
+  cursor: pointer; position: relative; overflow: hidden;
+  border: 1px solid transparent; min-height: 148px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+}
+.mod-card:hover                { transform: translateY(-6px) scale(1.015); }
+.mod-card:hover .mc-bg-e       { transform: scale(1.25) rotate(12deg); opacity: .22; }
+.mod-soon                      { pointer-events: none; }
+.mod-soon:hover                { transform: none !important; }
+
+.mc-bg-e {
+  position: absolute; right: -8px; bottom: -10px;
+  font-size: 68px; opacity: .1; line-height: 1;
+  pointer-events: none; transition: all .3s; z-index: 0;
+}
+.mod-card > * { position: relative; z-index: 1; }
+
+.mc-ico  { width: 44px; height: 44px; border-radius: 13px; background: rgba(255,255,255,.09); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 10px; }
+.mc-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 3px; }
+.mc-cnt  { font-size: 12px; color: rgba(255,255,255,.45); }
+.mc-live { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 20px; background: rgba(0,0,0,.3); margin-top: 6px; font-size: 10px; font-weight: 700; }
+
+.mod-wide { grid-column: span 2; }
+@media (max-width: 520px) { .mod-wide { grid-column: span 2; } }
+
+/* Feed + sidebar */
+.feed-layout {
+  display: grid; grid-template-columns: 1fr 300px; gap: 20px;
+}
+@media (max-width: 900px) { .feed-layout { grid-template-columns: 1fr; } }
+
+/* Filter bar (used in ModulePage) */
+.filter-bar {
+  display: flex; gap: 8px; margin-bottom: 26px;
+  overflow-x: auto; padding-bottom: 4px; scrollbar-width: none;
+}
+.filter-bar::-webkit-scrollbar { display: none; }
+
+.fchip { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; cursor: pointer; }
+.fchip-ico { width: 48px; height: 48px; border-radius: 13px; background: var(--ink3); border: 1.5px solid var(--rim); display: flex; align-items: center; justify-content: center; font-size: 21px; transition: all .2s; }
+.fchip-lbl { font-size: 10px; color: var(--txt3); transition: color .2s; font-weight: 600; }
+.fchip.on .fchip-ico  { background: rgba(139,92,246,.12); border-color: var(--violet); transform: scale(1.05); }
+.fchip.on .fchip-lbl  { color: var(--violet); }
+.fchip:hover .fchip-ico { border-color: var(--rim2); transform: scale(1.04); }
+
+/* Clockpoint layout */
+.clock-layout { display: grid; grid-template-columns: 1fr 280px; gap: 20px; }
+@media (max-width: 900px) { .clock-layout { grid-template-columns: 1fr; } }
